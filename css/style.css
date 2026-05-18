@@ -1,0 +1,305 @@
+/* Fontes Globais */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+    font-family: 'Ultra', serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    /* Textos de título todos em maiúsculo */
+}
+
+body,
+p,
+span,
+div,
+a {
+    font-family: 'Slabo 13px', serif;
+}
+
+body,
+html {
+    min-height: 100%;
+    margin: 0;
+    color: #ffffff;
+    /* Removido o background-color daqui para não esconder a imagem */
+}
+
+/* Background fixo que funciona em todos os dispositivos */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0f1720; /* Base fallback */
+    background-image: url('../img/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Animações Contínuas (Idle Animations) */
+
+/* 1. Flutuação suave (Floating) para o conteúdo */
+@keyframes floatAmbient {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Nova animação de movimento/pulso para a Navbar */
+@keyframes navbarPulse {
+    0% {
+        box-shadow: 0 8px 20px rgba(15, 23, 32, 0.6);
+        background-color: rgba(51, 65, 85, 0.05);
+    }
+
+    50% {
+        box-shadow: 0 15px 35px rgba(15, 23, 32, 0.9);
+        background-color: rgba(51, 65, 85, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 8px 20px rgba(15, 23, 32, 0.6);
+        background-color: rgba(51, 65, 85, 0.05);
+    }
+}
+
+/* 2. Brilho pulsante (Pulse Glow) usando a cor de 10% */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 107, 61, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 35px rgba(255, 107, 61, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 0 15px rgba(255, 107, 61, 0.2);
+    }
+}
+
+/* Efeito de Vidro (Mirror/Espelho) para Navbar */
+.custom-navbar {
+    background-color: rgba(51, 65, 85, 0.1);
+    /* Mais transparente (10% de opacidade) */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 8px 25px rgba(15, 23, 32, 0.8);
+    /* Sombra mais forte embaixo */
+    border: none;
+    /* Removida qualquer borda */
+    padding-top: 3.5rem !important;
+    /* Aumenta o espaço superior */
+    padding-bottom: 3.5rem !important;
+    /* Aumenta o espaço inferior */
+    animation: navbarPulse 6s ease-in-out infinite;
+    /* Efeito de movimento contínuo */
+    z-index: 1030;
+}
+
+/* Efeito de Vidro (Mirror/Espelho) para o Footer */
+.custom-footer {
+    background-color: rgba(51, 65, 85, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 -8px 25px rgba(15, 23, 32, 0.8);
+    border: none;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    animation: navbarPulse 6s ease-in-out infinite;
+    z-index: 1030;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.custom-navbar .navbar-brand {
+    font-size: 2.8rem;
+    color: #ffffff !important;
+    text-shadow: 2px 2px 5px #0f1720;
+    /* Sombra baseada na cor de 60% */
+    transition: all 0.3s ease;
+    display: inline-block;
+    animation: floatAmbient 5s ease-in-out infinite;
+    /* O texto flutua suavemente */
+}
+
+.custom-navbar .navbar-brand:hover {
+    color: #ff6b3d !important;
+    /* 10% color no hover */
+    transform: scale(1.05);
+}
+
+/* Container principal */
+.main-container {
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 120px; /* Compensação do footer no desktop */
+}
+
+/* Estilo do conteúdo (Caixa visual removida, atua apenas como organizador) */
+.content-wrapper {
+    padding: 3rem;
+    max-width: 800px;
+    width: 100%;
+
+    /* Efeito ambiente contínuo de flutuação mantido para que os elementos não fiquem estáticos */
+    animation: floatAmbient 6s ease-in-out infinite;
+}
+
+/* Imagem da pessoa (Transformada no "Espelho") */
+.person-img {
+    padding-top: 10px;
+    max-height: 400px;
+    border-radius: 20px;
+    object-fit: cover;
+
+    /* Efeito de transparência/espelho aplicado DIRETAMENTE atrás e sobre a foto */
+    background-color: rgba(51, 65, 85, 0.2);
+    /* Matiz 30% super leve */
+    backdrop-filter: blur(15px);
+    /* Cria a sensação de vidro/espelho no fundo da foto */
+    -webkit-backdrop-filter: blur(15px);
+
+    /* Leve transparência geral na própria imagem para mesclar com o ambiente */
+    opacity: 0.9;
+
+    border: none;
+    /* Borda removida a pedido */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+
+    /* Efeito de brilho contínuo combinando com a energia do fundo */
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Efeito ao passar o mouse na imagem */
+.person-img:hover {
+    transform: scale(1.08) rotate(2deg);
+    opacity: 1;
+    /* Remove a transparência e deixa a foto 100% nítida ao focar */
+}
+
+/* Textos do Convite */
+.invite-text {
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(15, 23, 32, 1);
+    /* Sombra mais forte (60%) já que perdemos a caixa de fundo */
+    margin-top: 2rem !important;
+    /* Mais espaço entre a foto e o texto */
+}
+
+.invite-text h1 {
+    color: #ff6b3d;
+    /* Usando a cor de 10% (#ff6b3d) para dar grande destaque ao título */
+    text-shadow: 2px 2px 5px rgba(15, 23, 32, 0.8);
+    font-size: 2.6rem;
+    /* Tamanho que costumava ser o da navbar */
+}
+
+.invite-text p {
+    font-size: 1.2rem;
+}
+
+/* Estilo do Botão (WhatsApp) usando a paleta */
+.btn-whatsapp {
+    background-color: #ff6b3d;
+    /* 10% color (Laranja/Avermelhado) */
+    color: #0f1720;
+    /* 60% color (Azul escuro) para dar alto contraste no texto */
+    font-family: 'Ultra', serif;
+    font-size: 1.8rem;
+    padding: 12px 35px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(255, 107, 61, 0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.btn-whatsapp:hover {
+    background-color: #ffffff;
+    color: #ff6b3d;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 107, 61, 0.7);
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+    .custom-navbar, .custom-footer {
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+    }
+
+    .custom-navbar .navbar-brand {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    .main-container {
+        padding-top: 60px;
+    }
+
+    /* Redimensionamento dos Títulos */
+    .invite-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .invite-text h3 {
+        font-size: 1.4rem;
+    }
+
+    /* Redimensionamento dos Textos */
+    .invite-text p {
+        font-size: 1rem;
+    }
+
+    /* Redimensionamento do Botão */
+    .btn-whatsapp {
+        font-size: 1.2rem;
+        padding: 12px 20px;
+    }
+
+    /* Comportamento de Telas Independentes (Scroll Snap) */
+    html {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+
+    .snap-section {
+        scroll-snap-align: start;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 70px;
+        padding-bottom: 90px; /* Aumentado para não ficar sob o footer */
+    }
+
+    .main-container {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .content-wrapper {
+        padding: 0 15px !important;
+    }
+}
